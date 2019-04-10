@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  name: MyString
+  lastname: MyString
+  password: MyString
+  address: MyString
+  phone: 1
+  profile: MyText
+  is_suspended: false
+  has_prev_suspension: false
+  is_blocked: false
+  geofence: one
+
+two:
+  email: MyString
+  name: MyString
+  lastname: MyString
+  password: MyString
+  address: MyString
+  phone: 1
+  profile: MyText
+  is_suspended: false
+  has_prev_suspension: false
+  is_blocked: false
+  geofence: two

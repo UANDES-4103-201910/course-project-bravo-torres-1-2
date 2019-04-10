@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dis Liked Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Creation date</th>
+      <th>Post</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dis_liked_posts.each do |dis_liked_post| %>
+      <tr>
+        <td><%= dis_liked_post.creation_date %></td>
+        <td><%= dis_liked_post.post %></td>
+        <td><%= dis_liked_post.user %></td>
+        <td><%= link_to 'Show', dis_liked_post %></td>
+        <td><%= link_to 'Edit', edit_dis_liked_post_path(dis_liked_post) %></td>
+        <td><%= link_to 'Destroy', dis_liked_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dis Liked Post', new_dis_liked_post_path %>

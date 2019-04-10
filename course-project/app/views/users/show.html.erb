@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @user.lastname %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @user.profile %>
+</p>
+
+<p>
+  <strong>Is suspended:</strong>
+  <%= @user.is_suspended %>
+</p>
+
+<p>
+  <strong>Has prev suspension:</strong>
+  <%= @user.has_prev_suspension %>
+</p>
+
+<p>
+  <strong>Is blocked:</strong>
+  <%= @user.is_blocked %>
+</p>
+
+<p>
+  <strong>Geofence:</strong>
+  <%= @user.geofence %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

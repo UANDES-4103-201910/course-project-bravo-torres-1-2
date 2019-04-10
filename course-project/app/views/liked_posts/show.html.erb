@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Creation date:</strong>
+  <%= @liked_post.creation_date %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @liked_post.post %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @liked_post.user %>
+</p>
+
+<%= link_to 'Edit', edit_liked_post_path(@liked_post) %> |
+<%= link_to 'Back', liked_posts_path %>
