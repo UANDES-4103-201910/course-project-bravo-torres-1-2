@@ -19,6 +19,7 @@ class LikedPostsController < ApplicationController
 
   # GET /liked_posts/1/edit
   def edit
+     @liked_post = LikedPost.find(params[:id])
   end
 
   # POST /liked_posts

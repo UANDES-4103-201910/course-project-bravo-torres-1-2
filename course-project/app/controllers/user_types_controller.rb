@@ -20,6 +20,7 @@ class UserTypesController < ApplicationController
 
   # GET /user_types/1/edit
   def edit
+     @user_type = UserType.find(params[:id])
   end
 
   # POST /user_types

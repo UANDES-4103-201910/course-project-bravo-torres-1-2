@@ -20,6 +20,7 @@ class DisLikedPostsController < ApplicationController
 
   # GET /dis_liked_posts/1/edit
   def edit
+     @dis_liked_post = DisLickedPost.find(params[:id])
   end
 
   # POST /dis_liked_posts
