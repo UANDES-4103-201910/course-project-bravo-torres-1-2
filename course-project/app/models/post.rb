@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   after_create do
    self.creation_date = Time.now
   end 
+  has_many :liked_posts
+  has_many :dis_liked_posts
+  has_many :reports
   belongs_to :user
   belongs_to :geofence
 end
