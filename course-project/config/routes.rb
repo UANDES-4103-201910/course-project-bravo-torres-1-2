@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'blacklist/main'
+  get 'dumpster/main'
   get 'log_in/main'
   get 'registration/main'
   root 'static_pages#home'
