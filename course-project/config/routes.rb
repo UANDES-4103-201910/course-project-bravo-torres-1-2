@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'temrsofservice/main'
   get 'blacklist/main'
   get 'dumpster/main'
   get 'log_in/main'
