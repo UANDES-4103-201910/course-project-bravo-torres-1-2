@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/home'
   get 'blacklist/main'
   get 'dumpster/main'
   get 'log_in/main'
