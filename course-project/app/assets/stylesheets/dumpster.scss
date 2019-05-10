@@ -1,35 +1,6 @@
-// Place all the styles related to the Posts controller here.
+// Place all the styles related to the dumpster controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-//new//
-body {
-            background-color: #eeeeee;
-        }
-
-        .h7 {
-            font-size: 0.8rem;
-        }
-
-        .gedf-wrapper {
-            margin-top: 0.97rem;
-        }
-
-        @media (min-width: 992px) {
-            .gedf-main {
-                padding-left: 4rem;
-                padding-right: 4rem;
-            }
-            .gedf-card {
-                margin-bottom: 2.77rem;
-            }
-        }
-
-        /**Reset Bootstrap*/
-        .dropdown-toggle::after {
-            content: none;
-            display: none;
-        }
-
 //index//
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
@@ -48,6 +19,3 @@ body {
 .row-section .media .media-body p{padding: 0 15px; font-size:14px;}
 .row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
 .btn-default{background:#6B456A; color:#fff; border-radius:30px; border:none; font-size:16px;}
-
-
-//show

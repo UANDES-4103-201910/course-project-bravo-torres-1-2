@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row-fluid">
+       
+    	<div class="mapouter"><div class="gmap_canvas"><iframe width="910" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=universidad%20de%20los%20andes&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Google Maps Generator by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div><style>.mapouter{position:relative;text-align:right;height:250px;width:910px;}.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:910px;}</style></div>
+    	<p id="notice"><%= notice %></p>
+		<p>
+  		<strong>Area:</strong>
+  		<%= @geofence.area %>
+		</p>
+		<p>
+  		<strong>Country:</strong>
+  		<%= @geofence.country %>
+		</p>
+		<%= link_to 'Edit', edit_geofence_path(@geofence) %>
+     </div>
+</div>
 
-<p>
-  <strong>Area:</strong>
-  <%= @geofence.area %>
-</p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @geofence.country %>
-</p>
-
-<%= link_to 'Edit', edit_geofence_path(@geofence) %> |
-<%= link_to 'Back', geofences_path %>
