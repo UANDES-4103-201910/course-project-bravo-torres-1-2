@@ -1,0 +1,2 @@
+module TemrsofserviceHelper
+end
