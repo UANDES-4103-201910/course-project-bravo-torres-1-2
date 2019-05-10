@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   get 'log_in/main'
   get 'registration/main'
-  root 'static_pages#home'
-  
-  get 'static_pages/home'  
+  get 'static_pages/home' 
+  root 'log_in#main' 
   resources :dis_liked_posts
   resources :liked_posts
   resources :reports

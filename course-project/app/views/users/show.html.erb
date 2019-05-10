@@ -1,59 +1,162 @@
-<p>
-  Hi
-</p>
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
-
-
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Profile:</strong>
-  <%= @user.profile %>
-</p>
-
-<p>
-  <strong>Is suspended:</strong>
-  <%= @user.is_suspended %>
-</p>
-
-<p>
-  <strong>Has prev suspension:</strong>
-  <%= @user.has_prev_suspension %>
-</p>
-
-<p>
-  <strong>Is blocked:</strong>
-  <%= @user.is_blocked %>
-</p>
-
-<p>
-  <strong>Geofence:</strong>
-  <%= @user.geofence %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<button style="border-radius: 10px; background-color: red; margin-right: 1000px; width: 100px; height: 40px;  border-color: red; margin-bottom: 5px;;" >Log out</button>
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        <%= @user.name %>
+                                    </h5>
+                                    <h6>
+                                        <%= @user.lastname %>
+                                    </h6>
+                                    <p class="proile-rating"><p>Date: <span id="datetime"></span></p><span></span>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Wall</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                       <div class="profile-edit" style="color: #6C757D">
+                        <%= link_to 'Edit Profile', edit_user_path(@user)%>
+                       </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>What would you like to do?</p>
+                            <a href="">Main Page</a><br/>
+                            <a href="">New Post</a><br/>
+                            <a href="">Report Post</a><br/>
+                            <a href="">Report User</a>
+                            <p>Activity</p>
+                            <a href="">Posts: 3</a><br/>
+                            <a href="">Liked posts: 15</a><br/>
+                            <a href="">Shared posts: 13</a><br/>
+                            <a href="">Commented posts: 4</a><br/>
+                            <a href="">Disliked posts: 40</a><br/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= @user.name + " " + @user.lastname %></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= @user.email %></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%=@user.phone %></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= @user.address %></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>My Bio!</label>
+                                            </div>
+                                            <div class="col-md-6" style="font-size: 13px">
+                                                <p><%=@user.profile %></p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Recient Complains</label>
+                                            </div>
+                                            <div class="col-md-6" style="font-size: 12px;">
+                                                <p>At 13/05/2019 Title: Problem with the acoustics where: Uandes State: Unsolved</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Shared Complains</label>
+                                            </div>
+                                            <div class="col-md-6" style="font-size: 12px;">
+                                                <p>At 1/04/2019 Title: Elevator in maintenace where: Titanium Building, Santiago,Chile State: Solved <br> By: Cristobal Uslar</b></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Commented Complain</label>
+                                            </div>
+                                            <div class="col-md-6" style="font-size: 12px;">
+                                                <p> No recent activity</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Like/Dislike Posts</label>
+                                            </div>
+                                            <div class="col-md-6" style="font-size: 12px;">
+                                               <p>At 11/05/2019 Title: the crazy waiter threw me hot soup where: Eladio Restaurant By: Cristobal Uslar <br> Dislike</b></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Recient Report</label>
+                                            </div>
+                                            <div class="col-md-6" style="font-size: 12px;">
+                                                <p>At 11/05/2019 Title: I hate people from other countries where: Santiago,Chile Restaurant By: Fernado Reyes <br> Offensive</b></p>
+                                            </div>
+                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label style="color: #09228a;
+                                          font-family: calibri;
+                                          font-size: 14pt;
+                                          font-style: italic;">Be part of a big community of pissed people </label><br/>
+                                        <p style="color:darkcyan;
+                                          font-family: calibri;
+                                          font-size: 14pt;
+                                          font-style: italic">and build together a better city</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
 <%= link_to 'Back', users_path %>
