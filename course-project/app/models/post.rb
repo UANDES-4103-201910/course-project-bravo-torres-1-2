@@ -6,8 +6,8 @@ class Post < ApplicationRecord
    self.creation_date = Time.now
   end 
   before_create do
-      self.user_id = current_user.user_id
-      self.geofence_id = current_user.geofence_id
+      #self.user_id = current_user.user_id
+      #self.geofence_id = current_user.geofence_id
       self.apropriated = true
       self.is_open = true
       self.is_solved = false
