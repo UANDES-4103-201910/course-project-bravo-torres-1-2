@@ -1,7 +1,6 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.string :email
       t.string :name
       t.string :lastname
       t.string :password
@@ -12,8 +11,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :has_prev_suspension
       t.boolean :is_blocked
       t.references :geofence, foreign_key: true
-
       t.timestamps
     end
   end
-end
+ end

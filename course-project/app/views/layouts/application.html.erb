@@ -17,17 +17,20 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/posts">Posts <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/log_in/main">Login <span class="sr-only">(current)</span></a>
+        <a  style =" background-color: transparent; color: white; border:none;  font-family: Futura; " class="btn btn-light"<%= link_to "Log in", new_user_session_path %> </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/registration/main">Join Us! <span class="sr-only">(current)</span></a>
+         <% if user_signed_in? %>
+        <a  style =" background-color: transparent; color: white; border:none; font-family: Futura;" class="btn btn-light" <%= link_to "My Profile!", new_user_registration_path %> </a>
+        <% else %>
+        <a  style =" background-color: transparent; color: white; border:none; font-family: Futura;" class="btn btn-light" <%= link_to "Join Us!", new_user_registration_path %> </a>
+        <% end%>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us</a>
@@ -43,7 +46,7 @@
   </div>
 </nav>
 <main role="main" class="container">
-<div class="starter-template" style="">
+  <div class="starter-template" style="">
     <%=yield%>
   </div>
 </main>

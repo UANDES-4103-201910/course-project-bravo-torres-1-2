@@ -1,7 +1,11 @@
+<% if user_signed_in? %>
 <p id="notice"><%= notice %></p>
-
-<h1>Users</h1>
-
+<div class = "login" style ="height: 550px;
+    width: 1200px;
+    margin-left: -20px;">
+      <h2>Admin Dashboard</h2>
+      <h3>Users</h3>
+<p> What do you want to do? </p>
 <table>
   <thead>
     <tr>
@@ -33,15 +37,17 @@
         <td><%= user.is_suspended %></td>
         <td><%= user.has_prev_suspension %></td>
         <td><%= user.is_blocked %></td>
-        <td><%= user.geofence %></td>
+        <td><%= user.geofence_id %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <%= link_to 'New User', new_user_path %>
   </tbody>
 </table>
 
 <br>
-
+</div>
+<%end%>
 <%= link_to 'New User', new_user_path %>

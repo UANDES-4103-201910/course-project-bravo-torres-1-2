@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @user_type.type %>
+  <%= @user_type.user_is %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @user_type.user %>
+  <%= @user_type.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_user_type_path(@user_type) %> |

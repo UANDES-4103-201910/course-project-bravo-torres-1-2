@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /posts
   # GET /posts.json
   def index
@@ -16,6 +16,9 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+  end
+  def search
+    @posts =Post.where("title LIKE ?","%" + params[:q] + "%")
   end
 
   # GET /posts/1/edit
@@ -59,7 +62,7 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
+  
     end
   end
 
@@ -71,6 +74,9 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:creation_date, :text, :title, :user_id, :geofence_id, :apropriated, :is_open, :is_solved, :share_counter, :report_counter, :is_hidden, :is_linked, :file_attachment)
+      params.require(:post).permit(:creation_date, :text, :title, :user_id, :geofence_id, :apropriated, :is_open, :is_solved, :share_counter, :report_counter, :is_hidden, :is_linked, :file_attachment, :image)
     end
+
+   
+
 end

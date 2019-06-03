@@ -4,41 +4,5 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
-    <div class="row">
-        
-        <div class="col-md-8 col-md-offset-2">
-            
-            <h1 style="color: #fff">New Report</h1>
-            <p style="color: #fff">We are sorry you to see you here.. </p>
-            
-            <form action="" method="POST">
-               
-                
-                <div class="form-group">
-                    <label style="color: #fff" for="title">Post ID <span class="require">*</span></label>
-                    <input type="text" class="form-control" name="title" />
-                </div>
-                
-                <div class="form-group">
-                    <label style="color: #fff" for="description">Report</label>
-                    <textarea rows="5" class="form-control" name="description" ></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <p style="color: #fff"><span class="require">*</span> - required fields</p>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
-                        Create
-                    </button>
-                    <button class="btn btn-default">
-                        Cancel
-                    </button>
-                </div>
-                
-            </form>
-        </div>
-        
-    </div>
+    <%= render 'form', geofence: @geofence %>
 </div>

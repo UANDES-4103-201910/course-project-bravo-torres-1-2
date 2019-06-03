@@ -1,4 +1,4 @@
-<div id="button" style= "border-radius: 10px; background-color:#0C1751; margin-right: 1000px; width: 100px; height: 40px;  border-color: red; margin-bottom: 5px; text-align: center;"><a href="/log_in/main">Log Out</a></div>
+<% if user_signed_in? %>
 <div class="container emp-profile">
             <form method="post">
                 <div class="row">
@@ -14,10 +14,12 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        <%= @user.name %>
+                                       <%= @user.name + " " + @user.lastname %>
                                     </h5>
                                     <h6>
-                                        <%= @user.lastname %>
+
+                                Your last access  <%= @user.last_time = DateTime.now().strftime("%d/%m/%Y At %I:%M%p")%>
+
                                     </h6>
                                     <p class="proile-rating"><p>Date: <span id="datetime"></span></p><span></span>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -32,7 +34,10 @@
                     </div>
                     <div class="col-md-2">
                        <div class="profile-edit" style="color: #6C757D">
-                        <%= link_to 'Edit Profile', edit_user_path(@user)%>
+                        <%= link_to 'Edit Profile',edit_user_registration_path %>
+                       </div>
+                       <div class="profile-edit" style="color: #6C757D">
+                        <%= link_to "Log Out", destroy_user_session_path, method: :delete%>
                        </div>
                     </div>
                 </div>
@@ -43,13 +48,26 @@
                             <a href="/posts#index">Main Page</a><br/>
                             <a href="/posts/new">New Post</a><br/>
                             <a href="/reports/new">Report Post</a><br/>
-                            <a href="">Report User</a>
+                            <a href="">Report User</a></br>
+                            <% if @user.user_types.first.user_is == "Admin" or "admin" %>
+                            <a href="/geofences/new">Create Geofence</a><br/>
+                            <a href="/geofences/index">View Geofence</a><br/>
+                            <a href="/blacklist/main">Blacklist</a><br/>
+                            <a href="/dumpster/main">Dumpster</a><br/>
+                            <%end%>
                             <p>Activity</p>
                             <a >Posts: 3</a><br/>
                             <a >Liked posts: 15</a><br/>
                             <a >Shared posts: 13</a><br/>
                             <a >Commented posts: 4</a><br/>
                             <a >Disliked posts: 40</a><br/>
+                            <% if @user.user_types.first.user_is == "Admin" or "admin" %>
+                            <a >Role: Admin</a><br/>
+                            <%elsif @user.user_types.first.user_is == "Superadmin" or "superadmin"%>
+                            <a >Role: SuperAdmin</a><br/>
+                            <%else%>
+                            <a >Role: User</a><br/>
+                            <%end%>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -95,6 +113,7 @@
                                                 <p><%=@user.profile %></p>
                                             </div>
                                         </div>
+
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">
@@ -110,7 +129,7 @@
                                                 <label>Shared Complains</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
-                                                <p>At 1/04/2019 Title: Elevator in maintenace where: Titanium Building, Santiago,Chile State: Solved <br> By: Cristobal Uslar</b></p>
+                                                <p>At 1/04/2019 Title: Elevator in maintenace where: Titanium Building, Santiago,Chile State: Solved <br> By: Cristobal Uslar</br></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -126,7 +145,7 @@
                                                 <label>Like/Dislike Posts</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
-                                               <p>At 11/05/2019 Title: the crazy waiter threw me hot soup where: Eladio Restaurant By: Cristobal Uslar <br> Dislike</b></p>
+                                               <p>At 11/05/2019 Title: the crazy waiter threw me hot soup where: Eladio Restaurant By: Cristobal Uslar <br> Dislike</br></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -134,27 +153,17 @@
                                                 <label>Recient Report</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
-                                                <p>At 11/05/2019 Title: I hate people from other countries where: Santiago,Chile Restaurant By: Fernado Reyes <br> Offensive</b></p>
+                                                <p>At 11/05/2019 Title: I hate people from other countries where: Santiago,Chile Restaurant By: Fernado Reyes <br> Offensive</br></p>
                                             </div>
                                         </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label style="color: #09228a;
-                                          font-family: calibri;
-                                          font-size: 14pt;
-                                          font-style: italic;">Be part of a big community of pissed people </label><br/>
-                                        <p style="color:darkcyan;
-                                          font-family: calibri;
-                                          font-size: 14pt;
-                                          font-style: italic">and build together a better city</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>           
-        </div>
+            </div>
+        </form>           
+    </div> 
+<%end%>
 <script>
 var dt = new Date();
 document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
