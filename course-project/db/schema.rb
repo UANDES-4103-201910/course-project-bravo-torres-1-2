@@ -127,11 +127,11 @@ ActiveRecord::Schema.define(version: 2019_06_02_171152) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "provider"
+    t.string "uid"
     t.string "trackable"
     t.string "database_authenticatable"
     t.datetime "last_time"
-    t.string "provider"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["geofence_id"], name: "index_users_on_geofence_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
