@@ -32,8 +32,14 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2" style=" margin-top: -20px;">
                        <div class="profile-edit" style="color: #6C757D">
+                        <%= link_to 'Admin Dashboard', users_path %>
+                        </div>
+                        <div class="profile-edit" style="color: #6C757D">
+                        <%= link_to 'SuperAdmin', user_types_path %>
+                        </div>
+                        <div class="profile-edit" style="color: #6C757D">
                         <%= link_to 'Edit Profile',edit_user_registration_path %>
                        </div>
                        <div class="profile-edit" style="color: #6C757D">
@@ -49,25 +55,17 @@
                             <a href="/posts/new">New Post</a><br/>
                             <a href="/reports/new">Report Post</a><br/>
                             <a href="">Report User</a></br>
-                            <% if @user.user_types.first.user_is == "Admin" or "admin" %>
                             <a href="/geofences/new">Create Geofence</a><br/>
                             <a href="/geofences/index">View Geofence</a><br/>
                             <a href="/blacklist/main">Blacklist</a><br/>
                             <a href="/dumpster/main">Dumpster</a><br/>
-                            <%end%>
+
                             <p>Activity</p>
                             <a >Posts: 3</a><br/>
                             <a >Liked posts: 15</a><br/>
                             <a >Shared posts: 13</a><br/>
                             <a >Commented posts: 4</a><br/>
                             <a >Disliked posts: 40</a><br/>
-                            <% if @user.user_types.first.user_is == "Admin" or "admin" %>
-                            <a >Role: Admin</a><br/>
-                            <%elsif @user.user_types.first.user_is == "Superadmin" or "superadmin"%>
-                            <a >Role: SuperAdmin</a><br/>
-                            <%else%>
-                            <a >Role: User</a><br/>
-                            <%end%>
                         </div>
                     </div>
                     <div class="col-md-8">
