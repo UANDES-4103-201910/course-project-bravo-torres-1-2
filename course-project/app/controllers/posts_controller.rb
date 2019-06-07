@@ -10,13 +10,15 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-  @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    logger.debug("[PostsController::create] rendered new")
   end
+  
   def search
     @posts =Post.where("title LIKE ?","%" + params[:q] + "%")
   end
@@ -29,11 +31,15 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    logger.debug("[PostsController::create] begin create, '#{current_user.id}'") if !current_user.nil?
+    logger.debug("[PostsController::create] begin create, user nil!") if current_user.nil?
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        logger.debug("[PostsController::create] post create")
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
