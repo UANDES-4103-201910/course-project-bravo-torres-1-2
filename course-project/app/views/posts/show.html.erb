@@ -9,7 +9,11 @@
     <div class="row">
       <div class="span2">
         <a href="#" class="thumbnail">
+          <% if @post.image_attachment != nil %>
+            <%= image_tag(@post.image , width:"180px", height:"150px") %>
+          <%else %>
             <img src="http://placehold.it/260x180" style = "width: 180px; height: 150px;">
+          <% end %>
         </a>
       </div>
       <div class="span6" style = "margin-left: 20px; width: 600px; text-align: left;">      
@@ -19,13 +23,21 @@
     margin-left: 5px;
     width: 300px;
     padding-top: 20px;">
-     	 <p style = "margin-left: -70px;">By: <%=@post.user.name%></p>
+     	 <p style = "margin-left: -70px;">By: <%=@post.user.name%> <%= @post.user.lastname%></p>
      <p> Created At: <%= @post.created_at = DateTime.now().strftime("%d/%m/%Y At %I:%M%p")%></p>
      	 
      </div>
 </div>
 </div>
 </div>
-<div class = "row" style=" margin-left: 30px;">
-<%= button_to "New Comments", new_comment_path %>
-</div>
+
+  
+  <%= form_with model: [@post, @comment],local: true do |f| %>
+  <%= f.text_field :text %>
+  <%= f.submit "comment" %>
+  <br/>
+  <% @comments.each do |comment| %>
+    [<%= comment.created_at.strftime("%I:%M %p") %>] <%= comment.user.name%> <%= comment.user.lastname%> : <%= comment.text %>
+    <br/>
+    <% end %>
+  <% end %>

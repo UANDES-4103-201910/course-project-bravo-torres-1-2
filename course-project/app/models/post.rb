@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   has_many :liked_posts
   has_many :dis_liked_posts
   has_many :reports
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_one_attached :image
   belongs_to :user
 

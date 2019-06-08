@@ -1,4 +1,4 @@
-<%= form_with(model: @post, local: true) do |form| %>
+<%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -11,22 +11,48 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-  </div>
+  <nav class="navbar navbar-light bg-white">
+        <a href="#" class="navbar-brand">Create a Post</a>
+    </nav>              
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make
+                                    a publication</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                                <div class="form-group">
+                                    <label  for="title">title</label>
+                                    <%= form.text_field :title , class: "form-control" %>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text">post</label>
+                                    <%= form.text_area :text, class: "form-control" %><% placeholder="What are you thinking?"%>
+                                </div>
 
-  <div class="form-group">
-    <%= form.label :text %>
-    <%= form.text_area :text, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :file_attachment %>
-    <%= form.check_box :file_attachment %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
+                            </div>
+                            <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                <div class="form-group">
+                                        <%= form.label :image %>
+                                        <%= form.file_field :image , :multiple => false %>
+                                </div>
+                                <div class="py-4"></div>
+                            </div>
+                        </div>
+                        <div class="btn-toolbar justify-content-between">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary">share</button>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
 <% end %>

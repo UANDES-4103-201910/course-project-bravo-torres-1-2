@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   resources :liked_posts
   resources :reports
   resources :comments
-  resources :posts
+  resources :posts do
+    post 'comments', to: 'comments#create'
+  end
   resources :geofences
   resources :user_types
   resources :users
