@@ -1,3 +1,4 @@
+
 <div class = "postshow">
 <div class="row" style=" margin-left: 30px;">
   <div class="span8">
@@ -16,17 +17,35 @@
           <% end %>
         </a>
       </div>
+
       <div class="span6" style = "margin-left: 20px; width: 600px; text-align: left;">      
       		 <%= @post.text%>
      </div>
-     <div class="span8" style ="    height: 100px;
-    margin-left: 5px;
-    width: 300px;
-    padding-top: 20px;">
-     	 <p style = "margin-left: -70px;">By: <%=@post.user.name%> <%= @post.user.lastname%></p>
-     <p> Created At: <%= @post.created_at = DateTime.now().strftime("%d/%m/%Y At %I:%M%p")%></p>
-     	 
+     <div class="span8" style ="height: 100px;margin-left: 5px;width: 300px;padding-top: 20px;">
+        <p style = "margin-left: -70px;">By:<%=@post.user.name%> <%= @post.user.lastname%></p>
+        <a style = "margin-left: -70px;"><%= link_to "Report Post",new_report_path %> </a>
+        <p> Created At: <%= @post.created_at = DateTime.now().strftime("%d/%m/%Y At %I:%M%p")%></p>
      </div>
+     <div class="span6" style="height: 100px;margin-left: 10px;width: 300px;padding-top: 30px;">
+       <td><%= link_to 'User Profile', user_path(@post.user.id) %>
+     </div>
+      <div class="caption" style="text-align:center;">
+        <%= link_to like_post_path(@post), class: "like" , method: :put do  %> 
+          <button type="button" class="btn btn-info" aria-label="Left Align">
+            <i class="fas fa-thumbs-up"></i>
+            <span ><%= @post.get_upvotes.size %> </span>
+          </button>
+          <% end %> 
+     </div>
+      <div class="caption" style="text-align:center;">
+        <%= link_to unlike_post_path(@post), class: "like" , method: :put do  %> 
+          <button type="button" class="btn btn-info" aria-label="Left Align">
+            <i class="fas fa-thumbs-down"></i>
+            <span><%= @post.get_downvotes.size %> </span>
+          </button>
+          <% end %> 
+     </div>
+    
 </div>
 </div>
 </div>
@@ -37,7 +56,7 @@
   <%= f.submit "comment" %>
   <br/>
   <% @comments.each do |comment| %>
-    [<%= comment.created_at.strftime("%I:%M %p") %>] <%= comment.user.name%> <%= comment.user.lastname%> : <%= comment.text %>
+    [<%= comment.created_at.strftime("%I:%M %p") %>] <%= comment.user.name%> <%= comment.user.lastname%> : <%= comment.text %>  <td><%= link_to 'User Profile', user_path(comment.user.id) %>
     <br/>
     <% end %>
   <% end %>

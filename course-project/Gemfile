@@ -40,6 +40,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'cancancan'
+gem 'acts_as_votable'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 
 group :development, :test do

@@ -136,7 +136,12 @@
                                                 <label>Commented Complain</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
-                                                <p> No recent activity</p>
+                                                <% if @user.posts.empty? %>
+
+                                                    <p> No recent activity</p>
+                                                <% else %>
+                                                    <p> hay posts </p>
+                                                <% end %>
                                             </div>
                                         </div>
                                         <div class="row">

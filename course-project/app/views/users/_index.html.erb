@@ -1,0 +1,35 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+
+<div class="container" style="width: 900px">
+        <div class="row">
+          <div class="span12">
+            <ul class="thumbnails">
+             <% @users.each do |user| %>
+              <li class="span5 clearfix"  style="width: 800px">
+                <div class="thumbnail clearfix">
+                   <% if user.avatar.attached? %>
+                              <%= image_tag user.avatar, class: "pull-left span2 clearfix", style: "margin-right: 10px" %>
+                            <% else %>
+                            <%= image_tag gravatar_image_url(user.email), class: "pull-left span2 clearfix", style: "margin-right: 10px" %>
+                          <% end %>
+                  <div class="caption" class="pull-left">
+                    <td class="btn btn-primary icon  pull-right"><%= link_to 'Show', user %></td> 
+                    <h4>      
+                      <h3> <%= user.name %>  <%= user.lastname %> </h3>
+                    </h4>
+                    <h5><b>phone: </b><%= user.phone %></h5>  
+                  </div>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>    
+        </div>
+       </div>
+
+
+
+
+
+
+

@@ -1,31 +1,41 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<section class="row-section">
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center"><span>All Reports</span></h2>
+      </div>
+      <div class="col-md-10 offset-md-1 row-block">
+        <%= form_with(model: @report, local: true) do |f| %>
+          <% @reports.each do |report| %>
+          
+            <ul id="sortable">
+              <li><div class="media">
+              <div class="media-left align-self-center">
+                  <%= image_tag report.user.avatar, class: "rounded-circle" %>
+              </div>
+              <div class="media-body">
+                  <h4><%= report.user.name %> <%= report.user.lastname %></h4>
+                  <h3><%= report.post.title %></h3>
+                  <p><%= report.post.text %></p>
+                  <p> <%= report.text %> </p>
 
-<h1>Reports</h1>
+              </div>
+              <div class="media-right align-self-center">
+                  <%= link_to "View Post", post_path(report.post), class: "btn btn-default" %> 
+              </div>
+              <div class="media-right align-self-center">
+                 <i class="fas fa-thumbs-up"></i>
+                 <span ><%= report.post.get_upvotes.size %> </span>
+              </div>
+              <div class="media-right align-self-center">
+                 <i class="fas fa-thumbs-down"></i>
+                 <span ><%= report.post.get_downvotes.size %> </span>
+              </div>
+          </div>
+          <% end %>
+          <%= link_to 'New Report', new_report_path %>
+        <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th>User</th>
-      <th>Post</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.text %></td>
-        <td><%= report.user %></td>
-        <td><%= report.post %></td>
-        <td><%= link_to 'Show', report %></td>
-        <td><%= link_to 'Edit', edit_report_path(report) %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Report', new_report_path %>
+ 
+      
