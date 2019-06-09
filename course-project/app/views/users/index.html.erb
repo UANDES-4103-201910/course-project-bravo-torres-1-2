@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 <p id="notice"><%= notice %></p>
-<div class = "login" style ="height: 550px;
+<div class = "login" style ="height: 2000px;
     width: 1200px;
     margin-left: -20px;">
       <h2>Admin Dashboard</h2>
@@ -10,12 +10,6 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th>Name</th>
-      <th>Lastname</th>
-      <th>Password</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th>Profile</th>
       <th>Is suspended</th>
       <th>Has prev suspension</th>
       <th>Is blocked</th>
@@ -28,17 +22,11 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.name %></td>
-        <td><%= user.lastname %></td>
-        <td><%= user.password %></td>
-        <td><%= user.address %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.profile %></td>
         <td><%= user.is_suspended %></td>
         <td><%= user.has_prev_suspension %></td>
         <td><%= user.is_blocked %></td>
         <td><%= user.geofence_id %></td>
-        <td><%= link_to 'Show', user %></td>
+        <td style="margin-left: 5px;"><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -5,13 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { in: 6..12 }
-  has_many :user_types
+  has_one :user_type
   has_many :like_posts
   has_many :dis_liked_posts
   has_many :posts
   has_many :reports
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
+  attribute :is_suspended, default: false
+  attribute :has_prev_suspension, default: false
+  attribute :is_blocked, default: false
+  attribute :useris, default: "Regular"
+
+
   def self.sign_in_from_omniauth(auth)
     find_by(provider: auth['provider'], uid: auth['uid'] ) || create_user_from_omniauth(auth)
   end
