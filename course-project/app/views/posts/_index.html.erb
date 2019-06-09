@@ -2,7 +2,7 @@
 <section class="row-section">
     <div class="container">
       <div class="row">
-        <h2 class="text-center"><span>Post's Page</span></h2>
+        <h2 class="text-center"><span></span></h2>
       </div>
       <div class="col-md-10 offset-md-1 row-block">
         <%= form_with(model: @post, local: true) do |f| %>
@@ -11,7 +11,7 @@
             <ul id="sortable">
               <li><div class="media">
               <div class="media-left align-self-center">
-                 <% if post.user.avatar.attached? %>
+                  <% if post.user.avatar.attached? %>
                               <%= image_tag post.user.avatar , class: "rounded-circle"%>
                             <% else %>
                             <%= image_tag gravatar_image_url(post.user.email), class: "rounded-circle" %>

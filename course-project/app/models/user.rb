@@ -16,8 +16,6 @@ class User < ApplicationRecord
   attribute :has_prev_suspension, default: false
   attribute :is_blocked, default: false
   attribute :useris, default: "Regular"
-
-
   def self.sign_in_from_omniauth(auth)
     find_by(provider: auth['provider'], uid: auth['uid'] ) || create_user_from_omniauth(auth)
   end

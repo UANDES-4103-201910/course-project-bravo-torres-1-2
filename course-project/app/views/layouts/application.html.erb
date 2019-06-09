@@ -8,7 +8,10 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <script src="https://kit.fontawesome.com/5be513d4da.js"></script>
+      
      <!--<link href="/bootstrap.min.css" rel="stylesheet">-->
+    
   </head>
       <body class="background-pissed" style=" height: 100%;
       min-height: 100%;">
@@ -39,8 +42,8 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" action="/search">
+      <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>

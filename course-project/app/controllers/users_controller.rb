@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  #def search
+  #  @users =User.where("name LIKE ?","%" + params[:q] + "%")
+  #end
+
   # GET /users/1/edit
   def edit
      @user = User.find(params[:id])

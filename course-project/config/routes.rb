@@ -9,13 +9,17 @@ Rails.application.routes.draw do
   get 'dumpster/main'
   get 'static_pages/home' 
   get 'search', to: "posts#search"
+  
   get 'auth/:provider/callback', to: "sessions#create"
   root to: "static_pages#home"
-  resources :dis_liked_posts
-  resources :liked_posts
+  
   resources :reports
   resources :comments
   resources :posts do
+    member do
+      put "like" => "posts#upvote"
+      put "unlike" => "posts#downvote"
+    end
     post 'comments', to: 'comments#create'
   end
   resources :geofences
