@@ -24,6 +24,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="files-tab" data-toggle="tab" role="tab" aria-controls="files" aria-selected="false" href="#files">File</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="card-body">
@@ -44,6 +47,15 @@
                                         <%= form.label :image %>
                                         <%= form.file_field :image , :multiple => false %>
                                 </div>
+                            </div>
+                                <div class="tab-pane fade" id="files" role="tabpanel" aria-labelledby="files-tab">
+                                    <div class="form-group">
+                                        <%= form.label :file %>
+                                        <%= form.file_field :file , :multiple => false %>
+                                    </div>
+                                </div>
+
+
                                 <div class="py-4"></div>
                             </div>
                         </div>

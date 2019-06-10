@@ -15,7 +15,14 @@ class User < ApplicationRecord
   attribute :is_suspended, default: false
   attribute :has_prev_suspension, default: false
   attribute :is_blocked, default: false
+
   attribute :useris, default: "Regular"
+
+  acts_as_voter
+  acts_as_follower
+  acts_as_mentionable
+  acts_as_mentioner
+  
   def self.sign_in_from_omniauth(auth)
     find_by(provider: auth['provider'], uid: auth['uid'] ) || create_user_from_omniauth(auth)
   end
