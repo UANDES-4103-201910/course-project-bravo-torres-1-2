@@ -5,6 +5,7 @@
           <div class="span12">
             <ul class="thumbnails">
              <% @users.each do |user| %>
+             <% if user.is_suspended == "false" %>
               <li class="span5 clearfix"  style="width: 800px">
                 <div class="thumbnail clearfix">
                    <% if user.avatar.attached? %>
@@ -21,6 +22,7 @@
                   </div>
                 </div>
               </li>
+              <% end %>
               <% end %>
             </ul>
           </div>    

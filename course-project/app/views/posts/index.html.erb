@@ -7,7 +7,7 @@
       <div class="col-md-10 offset-md-1 row-block">
         <%= form_with(model: @post, local: true) do |f| %>
           <% @posts.each do |post| %>
-          
+          <% if post.apropriated =="true" %>
             <ul id="sortable">
               <li><div class="media">
               <div class="media-left align-self-center">
@@ -35,6 +35,7 @@
                  <span ><%= post.get_downvotes.size %> </span>
               </div>
           </div>
+          <% end %>
           <% end %>
         <% end %>
         <%== pagy_nav(@pagy)%>

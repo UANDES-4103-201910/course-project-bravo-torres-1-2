@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get 'auth/:provider/callback', to: "sessions#create"
   root to: "static_pages#home"
-  
+  resources :blacklist 
   resources :reports
   resources :comments
   resources :posts do

@@ -5,67 +5,37 @@
         <h2 class="text-center"><span>Dumpster Page</span></h2>
       </div>
       <div class="col-md-10 offset-md-1 row-block">
-          <ul id="sortable">
+        <%= form_with(model: @post, local: true) do |f| %>
+          <% @posts.each do |post| %>
+            <% if post.apropriated == "false"%>
+            <ul id="sortable">
               <li><div class="media">
               <div class="media-left align-self-center">
-                  <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/50.jpg">
+                 <% if post.user.avatar.attached? %>
+                              <%= image_tag post.user.avatar , class: "rounded-circle"%>
+                            <% else %>
+                            <%= image_tag gravatar_image_url(post.user.email), class: "rounded-circle" %>
+                          <% end %>
               </div>
               <div class="media-body">
-                  <h4>User</h4>
-                  <p>Post description</p>
+                  <h4><%= post.user.name %> <%= post.user.lastname %></h4>
+                  <h3><%= post.title %></h3>
+                  <p><%= post.text %></p>
+
               </div>
               <div class="media-right align-self-center">
-                  <a href="#" class="btn btn-default">Remove</a>
-              </div>
-          </div></li>
-              <li><div class="media">
-              <div class="media-left align-self-center">
-                  <img class="rounded-circle" src="https://randomuser.me/api/portraits/men/42.jpg">
-              </div>
-              <div class="media-body">
-                  <h4>User</h4>
-                  <p>Post Description</p>
+                  <%= link_to "View Post", post_path(post), class: "btn btn-default" %> 
               </div>
               <div class="media-right align-self-center">
-                  <a href="#" class="btn btn-default">Remove</a>
-              </div>
-          </div></li>
-              <li><div class="media">
-              <div class="media-left align-self-center">
-                  <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/67.jpg">
-              </div>
-              <div class="media-body">
-                  <h4>User</h4>
-                  <p>Post Description</p>
+                 <i class="fas fa-thumbs-up"></i>
+                 <span ><%= post.get_upvotes.size %> </span>
               </div>
               <div class="media-right align-self-center">
-                  <a href="#" class="btn btn-default">Remove</a>
+                 <i class="fas fa-thumbs-down"></i>
+                 <span ><%= post.get_downvotes.size %> </span>
               </div>
-          </div></li>
-              <li><div class="media">
-              <div class="media-left align-self-center">
-                  <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/50.jpg">
-              </div>
-              <div class="media-body">
-                  <h4>User</h4>
-                  <p>Post Description</p>
-              </div>
-              <div class="media-right align-self-center">
-                  <a href="#" class="btn btn-default">Remove</a>
-              </div>
-              
-          </div></li>
-          
-              
-          
-          </ul>
-      </div>
-</div>
-</section>
-  <script>
-  $( function() {
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
-  } );
-  </script>
-<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+          </div>
+          <% end %>
+          <% end %>
+        <% end %>
+        <%== pagy_nav(@pagy)%>

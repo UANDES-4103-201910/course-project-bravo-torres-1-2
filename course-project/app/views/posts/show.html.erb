@@ -1,4 +1,4 @@
-
+<% if user_signed_in? %>
 <div class = "postshow">
 <div class="row" style=" margin-left: 30px;">
   <div class="span8">
@@ -81,4 +81,7 @@
     </div>
     <% end %>
     <%== pagy_nav(@pagy)%>
+  <% end %>
+  <% else %>
+  <%= link_to "Join Us to see users profile", new_user_registration_path %>
   <% end %>

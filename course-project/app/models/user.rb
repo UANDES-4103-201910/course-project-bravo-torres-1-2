@@ -16,7 +16,7 @@ class User < ApplicationRecord
   attribute :is_suspended, default: false
   attribute :has_prev_suspension, default: false
   attribute :is_blocked, default: false
-
+  
   attribute :useris, default: "Regular"
 
   acts_as_voter

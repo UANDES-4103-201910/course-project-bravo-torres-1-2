@@ -51,11 +51,11 @@
                     <div class="col-md-4">
                         <div class="profile-work" style="text-align: left;">
                             <p>What would you like to do?</p>
-                            <% if @user.useris == "Regular" %>
+                            <% if @user.useris == "Regular" && @user.is_suspended =="false" %>
                             <a href="/posts#index">Main Page</a><br/>
                             <a href="/posts/new">New Post</a><br/>
                             <a href="/reports/new">Report Post</a><br/>
-                            <%else%>
+                            <% elsif @user.useris == "Admin" or @user.useris =="SuperAdmin"%>
                             <a href="/posts#index">Main Page</a><br/>
                             <a href="/posts/new">New Post</a><br/>
                             <a href="/reports/new">Report Post</a><br/>
@@ -213,6 +213,8 @@
             </div>
         </form>           
     </div> 
+    <% else %>
+    <%= link_to "Join Us to see users profile", new_user_registration_path %>
 <%end%>
 <script>
 var dt = new Date();
