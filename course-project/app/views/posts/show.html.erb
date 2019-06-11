@@ -16,6 +16,9 @@
             <img src="http://placehold.it/260x180" style = "width: 180px; height: 150px;">
           <% end %>
         </a>
+       <div id="follow_post">
+         
+       </div>
       </div>
 
       <div class="span6" style = "margin-left: 20px; width: 600px; text-align: left;">      
@@ -24,8 +27,13 @@
      <div class="span8" style ="height: 100px;margin-left: 5px;width: 300px;padding-top: 20px;">
         <p style = "margin-left: -70px;">By:<%=@post.user.name%> <%= @post.user.lastname%></p>
         <a style = "margin-left: -70px;"><%= link_to "Report Post",new_report_path %> </a>
+        <% if current_user && current_user == @post.user %>
+        <a style = "margin-left: 0px;"><%= link_to "Edit Post",edit_post_path %> </a>
+        <a style = "margin-left: 5px;"><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+        <% end %>
         <p> Created At: <%= @post.created_at = DateTime.now().strftime("%d/%m/%Y At %I:%M%p")%></p>
      </div>
+    
      <div class="span6" style="height: 100px;margin-left: 10px;width: 300px;padding-top: 30px;">
        <td><%= link_to 'User Profile', user_path(@post.user.id) %>
      </div>
@@ -49,14 +57,28 @@
 </div>
 </div>
 </div>
+<div>
 
+  <% if @post.file_attachment  != nil%>
+   <%= link_to 'View file', @post.file%>
+  <% end %>
+</div>
   
+ 
   <%= form_with model: [@post, @comment],local: true do |f| %>
   <%= f.text_field :text %>
   <%= f.submit "comment" %>
   <br/>
   <% @comments.each do |comment| %>
     [<%= comment.created_at = DateTime.now().strftime("At %I:%M%p")%>] <%= comment.user.name%> <%= comment.user.lastname%> : <%= comment.text %>  <td><%= link_to 'User Profile', user_path(comment.user.id) %>
+   <div id="comment-<%= comment.id %>">
+    [<%= comment.created_at.strftime("%I:%M %p") %>] <%= comment.user.name%> <%= comment.user.lastname%> : <%= comment.text %>  <td><%= link_to 'User Profile', user_path(comment.user.id) %>
+      <% if current_user && current_user == comment.user || current_user.useris == "Admin" %>
+      <%= link_to "Delete", post_comment_path(@post, comment), method: :delete, remote: true %>
+      <% end %>
+  </td>
     <br/>
+    </div>
     <% end %>
+    <%== pagy_nav(@pagy)%>
   <% end %>
