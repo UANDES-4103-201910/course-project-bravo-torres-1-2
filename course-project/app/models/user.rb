@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { in: 6..12 }
+  acts_as_voter
   has_one :user_type
   has_many :like_posts
   has_many :dis_liked_posts

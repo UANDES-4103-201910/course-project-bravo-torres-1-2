@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   #cattr_accessor :current_user
 
-  validates :title, length: { in: 4..30 }
+  validates :title, length: { in: 4..100 }
   validates :text, length: { in: 1..150 }
 
   after_create do

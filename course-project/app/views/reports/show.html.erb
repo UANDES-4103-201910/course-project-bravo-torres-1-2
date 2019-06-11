@@ -1,19 +1,23 @@
 <p id="notice"><%= notice %></p>
-
+<div class = "login" style ="height: 400px;
+    width: 600px;
+    margin-left: 220px;">
 <p>
+<h2 style="margin-top: 10px;"> Your report was </h2>
   <strong>Text:</strong>
   <%= @report.text %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @report.user %>
+  <%= @report.user.name %>
 </p>
 
 <p>
   <strong>Post:</strong>
-  <%= @report.post %>
+  <%= @report.post.title %>
 </p>
 
 <%= link_to 'Edit', edit_report_path(@report) %> |
 <%= link_to 'Back', reports_path %>
+</div>

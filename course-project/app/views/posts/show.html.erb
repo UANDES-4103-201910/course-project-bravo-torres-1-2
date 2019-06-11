@@ -56,7 +56,7 @@
   <%= f.submit "comment" %>
   <br/>
   <% @comments.each do |comment| %>
-    [<%= comment.created_at.strftime("%I:%M %p") %>] <%= comment.user.name%> <%= comment.user.lastname%> : <%= comment.text %>  <td><%= link_to 'User Profile', user_path(comment.user.id) %>
+    [<%= comment.created_at = DateTime.now().strftime("At %I:%M%p")%>] <%= comment.user.name%> <%= comment.user.lastname%> : <%= comment.text %>  <td><%= link_to 'User Profile', user_path(comment.user.id) %>
     <br/>
     <% end %>
   <% end %>

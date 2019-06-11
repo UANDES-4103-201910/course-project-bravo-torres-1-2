@@ -1,4 +1,8 @@
 class AdminController < ApplicationController
-  def home
+  def edituseradmin
   end
+
+  def createuseradmin
+  end
+
 end

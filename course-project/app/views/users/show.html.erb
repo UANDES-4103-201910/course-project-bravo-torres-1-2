@@ -28,7 +28,7 @@
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Wall</a>
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recent Activity</a>
                                 </li>
                                 <% if current_user.id == @user.id %>
                                 <li class="nav-item">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="profile-work">
+                        <div class="profile-work" style="text-align: left;">
                             <p>What would you like to do?</p>
                             <% if @user.useris == "Regular" %>
                             <a href="/posts#index">Main Page</a><br/>
@@ -60,22 +60,22 @@
                             <a href="/posts/new">New Post</a><br/>
                             <a href="/reports/new">Report Post</a><br/>
                             <a href="/geofences/new">Create Geofence</a><br/>
-                            <a href="/geofences/index">View Geofence</a><br/>
+                            <a href="/geofences">View Geofence</a><br/>
                             <a href="/blacklist/main">Blacklist</a><br/>
                             <a href="/dumpster/main">Dumpster</a><br/>
                             <%end%>
                             <p>Activity</p>
                             <a >Posts: 
                                 <%=@user.posts.count%></a><br/>
-                            <a >Liked posts: 15</a><br/>
                             <a >Shared posts: 13</a><br/>
                             <a >Commented posts: 
                                <%= @user.comments.count%></a><br/>
-                            <a >Disliked posts: 40</a><br/>
+                            <a> User Role: <%= @user.useris%> </a>
+                            
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-content profile-tab" id="myTabContent" style = "text-align: left";>
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -121,6 +121,7 @@
                             </div>
                         <% if current_user.id == @user.id %>
                         <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
+                                        <% if @user.useris == "Admin"%>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Admin Activity</label>
@@ -129,45 +130,22 @@
                                                 <%= link_to 'Show Users', users_path %>
                                             </div>
                                         </div>
+                                        <%elsif @user.useris == "SuperAdmin"%>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>SuperAdmin Activity</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><%= link_to 'SuperAdmin', user_types_path %></p>
+                                                 <%= link_to 'Show Users', users_path %>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%=@user.phone %></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Address</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%= @user.address %></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>My Bio!</label>
-                                            </div>
-                                            <div class="col-md-6" style="font-size: 13px">
-                                                <p><%=@user.profile %></p>
-                                            </div>
-                                        </div>
-
+                            <%end%>            
                             </div>
                             <%end%>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Recient Complains</label>
+                                                <label>Recent Complains</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
                                                 <% if @user.posts.empty? %> 
@@ -193,24 +171,39 @@
                                                 <% if @user.comments.empty?%>
                                                 <p> No recent activity</p>
                                                 <%else%>
-                                                <p> <%=@user.comments.last.text%></p>
+                                                    <%comment_post = Post.find_by(id: @user.comments.last.post.id)%>
+                                                    <%if comment_post%>
+                                                    <p><%= link_to @user.comments.last.text, comment_post%></p>
+                                                    <%end%>
                                                 <%end%>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Like/Dislike Posts</label>
+                                                <label>Upvoted/Downvoted Posts</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
-                                               <p>At 11/05/2019 Title: the crazy waiter threw me hot soup where: Eladio Restaurant By: Cristobal Uslar <br> Dislike</br></p>
+                                                <% if @user.votes.empty? %>
+                                                <p> No recent votes </p>
+                                                <%else%>
+                                                <% voted_post = Post.find_by(id: @user.votes.last.votable_id) %>
+                                                <% if voted_post %>
+                                                    <p><%= link_to @user.votes.last.vote_flag ? 'Like Post' : 'Dislike Post', voted_post %></p>
+                                               <%end%>
+                                               <%end%>
                                             </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Recient Report</label>
+                                                <label>Recent Report</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
-                                                <p>At 11/05/2019 Title: I hate people from other countries where: Santiago,Chile Restaurant By: Fernado Reyes <br> Offensive</br></p>
+                                            <% if @user.reports.empty? %>
+                                            <p> No recent reports</p>
+                                            <%else%>
+                                            <p><%=link_to @user.reports.last.text, report_path(@user.reports.last) %></p>
+                                            <%end%>
                                             </div>
                                         </div>
                             </div>

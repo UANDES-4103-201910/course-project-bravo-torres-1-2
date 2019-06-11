@@ -1,5 +1,87 @@
+<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+<div class = "login" style ="height: 600px;
+    width: 800px;
+    margin-left: 90px;">
 <h1>New User</h1>
+<p id="notice"><%= notice %></p>
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= render 'form', user: @user %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.number_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profile %>
+    <%= form.text_area :profile %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_suspended %>
+    <%= form.check_box :is_suspended %>
+  </div>
+
+  <div class="field">
+    <%= form.label :has_prev_suspension %>
+    <%= form.check_box :has_prev_suspension %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_blocked %>
+    <%= form.check_box :is_blocked %>
+  </div>
+
+  <div class="field">
+    <%= form.label :geofence_id %>
+    <%= form.text_field :geofence_id %>
+  </div>
+
+    <div class="field">
+    <%= form.label :user_is %>
+    <%= form.text_field :user_is %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 
 <%= link_to 'Back', users_path %>
+<%end%>
+</div>
+<%end%>

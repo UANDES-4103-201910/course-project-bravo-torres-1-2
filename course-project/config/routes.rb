@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
   get 'home/show'
   devise_for :users
-  get 'admin/home'
+  get 'admin/edituseradmin'
   get 'temrsofservice/main'
   get 'blacklist/main'
   get 'dumpster/main'

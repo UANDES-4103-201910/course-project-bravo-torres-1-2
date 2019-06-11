@@ -11,67 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lastname %>
-    <%= form.text_field :lastname %>
-  </div>
-
+  <%if current_user.useris == "Admin"%>
   <div class="field">
     <%= form.label :password %>
     <%= form.text_field :password %>
   </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.number_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :profile %>
-    <%= form.text_area :profile %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_suspended %>
-    <%= form.check_box :is_suspended %>
-  </div>
-
-  <div class="field">
-    <%= form.label :has_prev_suspension %>
-    <%= form.check_box :has_prev_suspension %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_blocked %>
-    <%= form.check_box :is_blocked %>
-  </div>
-
-  <div class="field">
-    <%= form.label :geofence_id %>
-    <%= form.text_field :geofence_id %>
-  </div>
-
-    <div class="field">
-    <%= form.label :user_is %>
-    <%= form.text_field :user_is %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
-<% end %>
+  <%elsif current_user.useris == "SuperAdmin"%>
+      <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+    </div>
+      <div class="field">
+    <%= form.label :geofence_id %>
+    <%= form.text_field :geofence_id %>
+  </div>
+    <div class="field">
+    <%= form.label :useris %>
+    <%= form.text_field :useris %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <%end%>
+<%end%>
+

@@ -1,4 +1,6 @@
-<div class = "login" style ="height: 2000px; width: 1200px; margin-left: -20px;">
+<div class = "login" style ="height: 400px; width: 500px; margin-left: 300px;">
+<h1> Editing the information</h1>
+<p> of  <%= @user.name%> </p>
 <%= render 'form', user: @user %>
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
