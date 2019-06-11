@@ -24,11 +24,15 @@ Delete administrator
 (a) View user profile and edit user
 You add photos to the post
 Functional views (of all)
-
-Pending list
 Differentiate between types of users
-Log in with google
 View user posts, user reports and user comments
-Manage blacklist and dumpster.
 Search function
+View blaklist and dumpster
+Pending list
+Log in with google
+complete blacklist and dumpster.
+View post location on map
+Search by author
+Search by location
+
 
