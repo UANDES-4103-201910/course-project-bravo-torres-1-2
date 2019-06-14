@@ -31,7 +31,7 @@
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recent Activity</a>
                                 </li>
                                 <% if current_user.id == @user.id %>
-                                <% if @user.useris == "Admin"%>
+                                <% if @user.useris == "Admin" or @user.useris == "SuperAdmin"%>
                                 <li class="nav-item">
                                     <a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="admin" aria-selected="false">Admin Dashboard</a>
                                 </li>
@@ -155,14 +155,6 @@
                                                 <%else%>
                                                 <p style ="font-weight: 600; color: #0062cc;"> <%= link_to @user.posts.last.title , post_path(@user.posts.last)%></p>
                                                 <%end%>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Shared Complaints</label>
-                                            </div>
-                                            <div class="col-md-6" style="font-size: 12px;">
-                                                <p>At 1/04/2019 Title: Elevator in maintenace where: Titanium Building, Santiago,Chile State: Solved <br> By: Cristobal Uslar</br></p>
                                             </div>
                                         </div>
                                         <div class="row">
