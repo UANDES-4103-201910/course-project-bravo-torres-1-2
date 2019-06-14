@@ -9,7 +9,7 @@
         <%= form_with(model: @post, local: true) do |f| %>
           <% @posts.each do |post| %>
           <!-- la linea de abajo funciona bien deja esa en vez de la == true -->
-            <% unless post.apropriated%>
+            <% unless post.apropriated? %>
             <ul id="sortable">
               <li><div class="media">
               <div class="media-left align-self-center">

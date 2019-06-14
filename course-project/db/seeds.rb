@@ -13,10 +13,10 @@ geofence= Geofence.create([{area: 'Las Condes', country: 'Chile'}])
 
 ######### USERS #########
 
-users = User.create([{name: 'Admin', lastname: 'Pissed',email:"admin@pissed.com",password: 'admin123',address: 'san carlos 2200',phone: '954240055', profile: 'admin profile', is_suspended: 'false',has_prev_suspension: 'false',is_blocked: 'false', geofence_id: 1,last_time:  DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'Admin'},
-{name: 'Super Admin', lastname: 'Pissed',email: "sadmin@pissed.com",password: 'admin123',address: 'san carlos 2200',phone: '954247645', profile: 'super admin profile', is_suspended: 'false',has_prev_suspension: 'false',is_blocked: 'false', geofence_id: 1,last_time: DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'SuperAdmin'},
-{name: 'User', lastname: 'Pissed',email: "user@pissed.com",password: 'password123',address: 'san carlos 2200',phone: '957247755', profile: 'user profile', is_suspended: 'false',has_prev_suspension: 'false',is_blocked: 'false', geofence_id: 1,last_time: DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'Regular'},
-{name: 'Renegado', lastname: 'poster',email: "renegado@pissed.com",password: 'password123',address: 'san carlos 2200',phone: '954746855', profile: 'profile', is_suspended: 'true',has_prev_suspension: 'false',is_blocked: 'false', geofence_id: 1,last_time: DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'Regular'}])
+users = User.create([{name: 'Admin', lastname: 'Pissed',email:"admin@pissed.com",password: 'admin123',address: 'san carlos 2200',phone: '954240055', profile: 'admin profile', is_suspended: false,has_prev_suspension: false,is_blocked: false, geofence_id: 1,last_time:  DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'Admin'},
+{name: 'Super Admin', lastname: 'Pissed',email: "sadmin@pissed.com",password: 'admin123',address: 'san carlos 2200',phone: '954247645', profile: 'super admin profile', is_suspended: false,has_prev_suspension: false,is_blocked: false, geofence_id: 1,last_time: DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'SuperAdmin'},
+{name: 'User', lastname: 'Pissed',email: "user@pissed.com",password: 'password123',address: 'san carlos 2200',phone: '957247755', profile: 'user profile', is_suspended: false,has_prev_suspension: false,is_blocked: false, geofence_id: 1,last_time: DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'Regular'},
+{name: 'Renegado', lastname: 'poster',email: "renegado@pissed.com",password: 'password123',address: 'san carlos 2200',phone: '954746855', profile: 'profile', is_suspended:true ,has_prev_suspension: false,is_blocked: false, geofence_id: 1,last_time: DateTime.strptime("06/10/2019 17:00", "%m/%d/%Y %H:%M"),useris:'Regular'}])
 
 ######### POSTS ########
 
