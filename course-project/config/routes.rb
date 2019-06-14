@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'dumpster/main'
   get 'static_pages/home' 
   get 'search', to: "posts#search"
+  get 'userspost', to: "users#userspost" 
+  
   
   get 'auth/:provider/callback', to: "sessions#create"
   root to: "static_pages#home"
@@ -25,8 +27,7 @@ Rails.application.routes.draw do
   end
   resources :geofences
   resources :user_types
-  resources :users do
-    resources :follows, :only => [:create,:destroy]
-  end
+  resources :users 
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
