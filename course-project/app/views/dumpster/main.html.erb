@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <section class="row-section">
     <div class="container">
+    <div class = "postindex">
       <div class="row">
-        <h2 class="text-center"><span>Dumpster Page</span></h2>
+        <h2  style = " color:black;" class="text-center"><span>Dumpster Page</span></h2>
       </div>
       <div class="col-md-10 offset-md-1 row-block">
         <%= form_with(model: @post, local: true) do |f| %>
@@ -40,3 +41,4 @@
           <% end %>
         <% end %>
         <%== pagy_nav(@pagy)%>
+</div>
