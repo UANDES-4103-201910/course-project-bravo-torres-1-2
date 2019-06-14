@@ -3,7 +3,8 @@
 	 <div class="row userMain">
     
         <% @users.each do |user| %>
-        <% if user.is_suspended == "true" %>
+        <!-- la linea de abajo funciona bien deja esa en vez de la == true -->
+        <% if user.is_suspended? %>
            <div class="col-md-3 col-sm-4">
                <div class="userBlock">
                    <div class="backgrounImg">

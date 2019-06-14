@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :search]
 
   # GET /users
   # GET /users.json
@@ -18,9 +18,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  #def search
-  #  @users =User.where("name LIKE ?","%" + params[:q] + "%")
-  #end
+  def userspost
+    @pagy, @posts = pagy(Post.all.order(:cached_votes_up => :desc), items: 5)
+ 
+  end
 
   # GET /users/1/edit
   def edit

@@ -5,7 +5,8 @@
           <div class="span12">
             <ul class="thumbnails">
              <% @users.each do |user| %>
-             <% if user.is_suspended == "false" %>
+             <!-- la linea de abajo funciona bien deja esa en vez de la == false -->
+             <% unless user.is_suspended %>
               <li class="span5 clearfix"  style="width: 800px">
                 <div class="thumbnail clearfix">
                    <% if user.avatar.attached? %>

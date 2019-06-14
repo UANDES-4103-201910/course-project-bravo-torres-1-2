@@ -8,7 +8,8 @@
       <div  style = "margin-top: -30px;" class="col-md-10 offset-md-1 row-block">
         <%= form_with(model: @post, local: true) do |f| %>
           <% @posts.each do |post| %>
-          <% if post.apropriated =="true" %>
+          <!-- la linea de abajo funciona bien deja esa en vez de la == true -->
+          <% if post.apropriated? %>
             <ul id="sortable">
               <li><div class="media">
               <div class="media-left align-self-center">
