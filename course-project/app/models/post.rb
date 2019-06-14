@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_one_attached :file
   belongs_to :user
   acts_as_votable
-  acts_as_followable
+ 
   
   #cattr_accessor :current_user
 

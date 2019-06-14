@@ -27,7 +27,7 @@
      <div class="span8" style ="height: 100px;margin-left: 5px;width: 300px;padding-top: 20px;">
         <p style = "margin-left: -70px;">By:<%=@post.user.name%> <%= @post.user.lastname%></p>
         <a style = "margin-left: -70px;"><%= link_to "Report Post",new_report_path %> </a>
-        <% if current_user && current_user == @post.user %>
+        <% if current_user && current_user == @post.user or (current_user.useris=="Admin" or current_user.useris =="SuperAdmin") %>
         <a style = "margin-left: 0px;"><%= link_to "Edit Post",edit_post_path %> </a>
         <a style = "margin-left: 5px;"><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
         <% end %>

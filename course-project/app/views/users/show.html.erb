@@ -51,7 +51,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
+                        
                         <div class="profile-work" style="text-align: left;">
+                            <% if current_user.id == @user.id %>
                             <p>What would you like to do?</p>
                             <% if @user.useris == "Regular"%>
                             <a href="/posts#index">Main Page</a><br/>
@@ -70,6 +72,17 @@
                             <!-- la linea de abajo es el link para lost post de user -->
                             <a href="/userspost"> My Posts</a><br/>
                             <%end%>
+                            <% else %>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <% end %>
                             <p>Activity</p>
                             <a >Posts: 
                                 <%=@user.posts.count%></a><br/>
