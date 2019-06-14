@@ -31,9 +31,11 @@
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recent Activity</a>
                                 </li>
                                 <% if current_user.id == @user.id %>
+                                <% if @user.useris == "Admin"%>
                                 <li class="nav-item">
                                     <a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="admin" aria-selected="false">Admin Dashboard</a>
                                 </li>
+                                <%end%>
                                 <%end%>
                             </ul>
                         </div>
@@ -51,7 +53,7 @@
                     <div class="col-md-4">
                         <div class="profile-work" style="text-align: left;">
                             <p>What would you like to do?</p>
-                            <% if @user.useris == "Regular" && @user.is_suspended =="false" %>
+                            <% if @user.useris == "Regular"%>
                             <a href="/posts#index">Main Page</a><br/>
                             <a href="/posts/new">New Post</a><br/>
                             <a href="/reports/new">Report Post</a><br/>
@@ -145,7 +147,7 @@
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Recent Complains</label>
+                                                <label>Recent Complaints</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
                                                 <% if @user.posts.empty? %> 
@@ -157,7 +159,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Shared Complains</label>
+                                                <label>Shared Complaints</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
                                                 <p>At 1/04/2019 Title: Elevator in maintenace where: Titanium Building, Santiago,Chile State: Solved <br> By: Cristobal Uslar</br></p>
@@ -165,7 +167,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Commented Complain</label>
+                                                <label>Commented Complaint</label>
                                             </div>
                                             <div class="col-md-6" style="font-size: 12px;">
                                                 <% if @user.comments.empty?%>
